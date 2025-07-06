@@ -84,36 +84,3 @@ highlight! link StorageClass Structure
 highlight! link Typedef      Structure
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function IsActive(name)
-	let var="g:no_ancient_pattern"
-
-	if a:name != ""
-		let l:var = "g:no_ancient_" . a:name . "_pattern"
-	endif
-
-	return !(exists(l:var) && eval(l:var) == 1)
-endfunction
-
-if !IsActive("")
-	finish
-endif
-
-if IsActive("functions") " it MUST be before `constants`
-	syntax match Function "\v<[a-zA-Z_]\w*\ze\("
-	syntax match Function "\v\.\zs[a-zA-Z_]\w*\ze>[^.(]"
-endif
-
-if IsActive("constants") " it MUST be before `functions`
-	syntax match Constant "\v<[A-Z_][A-Z_0-9]*>"
-endif
-
-if IsActive("numbers")
-	syntax match Number "\v\d+\.\d*"
-	syntax match Number "\v\d*\.\d+"
-	syntax match Number "\v0[bB][0-1]*"
-	syntax match Number "\v0[oO][0-8]*"
-	syntax match Number "\v0[xX][0-9a-fA-F]*"
-	syntax match Number "\v\d+[eE]\d*"
-	syntax match Number "\v\d+\.\d+[eE]\d*"
-endif
