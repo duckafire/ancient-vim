@@ -1,7 +1,29 @@
-"" Author: DuckAfire
-"" Version: v0.0.3
-"" License: MIT
-"" Repository: https://github.com/duckafire/ancient-vim
+" Author: DuckAfire
+" Version: v1.0.0
+" Repository: https://github.com/duckafire/ancient-vim
+" License:
+"
+" MIT License
+"
+" Copyright (c) 2025 DuckAfire <duckafire.github.io/nest>
+"
+" Permission is hereby granted, free of charge, to any person obtaining a copy
+" of this software and associated documentation files (the "Software"), to deal
+" in the Software without restriction, including without limitation the rights
+" to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+" copies of the Software, and to permit persons to whom the Software is
+" furnished to do so, subject to the following conditions:
+"
+" The above copyright notice and this permission notice shall be included in all
+" copies or substantial portions of the Software.
+"
+" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+" OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+" SOFTWARE.
 
 " `:h cterm`: see colors names
 " `:h group`: see generic highlight groups
@@ -61,6 +83,7 @@ exe "hi! Underlined     ctermfg=" . s:under_fg   . " ctermbg=none  cterm=none"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" highlight
 hi! link Identifier Normal
 
 hi! link Boolean Constant
@@ -84,56 +107,5 @@ hi! link Macro        PreProc
 
 hi! link StorageClass Structure
 hi! link Typedef      Structure
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-function! InheritHighlight(lang)
-	exec 'hi! link ' . a:lang . 'Identifier Normal'
-
-	exec 'hi! link ' . a:lang . 'Boolean Constant'
-
-	exec 'hi! link ' . a:lang . 'Float     Number'
-	exec 'hi! link ' . a:lang . 'Character Number'
-
-	for group in ["Keyword", "Conditional", "Operator", "Label", "Repeat", "SpecialChar", "Exception", "Delimiter"]
-		exec 'hi! link ' . a:lang . l:group . ' Statement'
-	endfor
-
-	exec 'hi! link ' . a:lang . 'PreProCondit PreProc'
-	exec 'hi! link ' . a:lang . 'Define       PreProc'
-	exec 'hi! link ' . a:lang . 'Include      PreProc'
-	exec 'hi! link ' . a:lang . 'Macro        PreProc'
-
-	exec 'hi! link ' . a:lang . 'StorageClass Structure'
-	exec 'hi! link ' . a:lang . 'Typedef      Structure'
-endfunction
-
-function! SyntaxMatches(lang)
-	exec 'syn match ' . a:lang . 'Function "\v<[a-zA-Z_]\w*\ze\("'
-	exec 'syn match ' . a:lang . 'Function "\v\.\zs[a-zA-Z_]\w*\ze>[^.(]"'
-
-	exec 'syn match ' . a:lang . 'Constant "\v<[A-Z_][A-Z_0-9]*>"'
-
-	for pattern in ['"\v\d+\.\d*"', '"\v\d*\.\d+"', '"\v0[bB][0-1]*"', '"\v0[oO][0-8]*"', '"\v0[xX][0-9a-fA-F]*"', '"\v\d+[eE]\d*"', '"\v\d+\.\d+[eE]\d*"']
-		exec 'syn match ' . a:lang . 'Number ' . l:pattern
-	endfor
-endfunction
-
-function! SetAll(lang)
-	augroup foo
-		exec 'autocmd FileType ' . a:lang . ' :call InheritHighlight("' . a:lang . '")'
-		exec 'autocmd FileType ' . a:lang . ' :call SyntaxMatches("'    . a:lang . '")'
-	augroup END
-endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-call SetAll("c")
-call SetAll("cpp")
-call SetAll("lua")
-call SetAll("javascript")
-call SetAll("typescript")
-call SetAll("java")
-call SetAll("python")
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
