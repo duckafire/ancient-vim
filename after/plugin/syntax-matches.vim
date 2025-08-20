@@ -40,16 +40,25 @@ endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+let s:autocmd_events='BufAdd,BufEnter,BufFilePre,BufNew,BufNewFile,BufReadPre,BufWinEnter,Filetype'
+
+function __ancient_vim_syntax_matches__(lang)
+	exec 'augroup __ancient_vim_syntax_matches_autocmd_' . a:lang . '__'
+		exec 'autocmd!'
+		exec 'autocmd ' . s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Function "\v(\.|\-\>)?\zs<[a-zA-Z_]\w*\ze\("'
+		exec 'autocmd ' . s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Function "\v(\.|\-\>)\zs<[a-zA-Z_]\w*\ze(\.|\-\>)?"'
+
+		exec 'autocmd ' . s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Constant "\v<[A-Z_][A-Z_0-9]*>"'
+
+		for pattern in ['"\v\d+\.\d*"', '"\v\d*\.\d+"', '"\v0[bB][0-1]*"', '"\v0[oO][0-8]*"', '"\v0[xX][0-9a-fA-F]*"', '"\v\d+[eE]\d*"', '"\v\d+\.\d+[eE]\d*"']
+			exec 'autocmd ' s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Number ' . pattern
+		endfor
+	exec 'augroup END'
+endfunction
+
 " from generic to specific
 for lang in g:syntax_matches_languages_to_ancient_vim
-	exec 'syn match ' . lang . 'Function "\v(\.|\-\>)?\zs<[a-zA-Z_]\w*\ze\("'
-	exec 'syn match ' . lang . 'Function "\v(\.|\-\>)\zs<[a-zA-Z_]\w*\ze(\.|\-\>)?"'
-
-	exec 'syn match ' . lang . 'Constant "\v<[A-Z_][A-Z_0-9]*>"'
-
-	for pattern in ['"\v\d+\.\d*"', '"\v\d*\.\d+"', '"\v0[bB][0-1]*"', '"\v0[oO][0-8]*"', '"\v0[xX][0-9a-fA-F]*"', '"\v\d+[eE]\d*"', '"\v\d+\.\d+[eE]\d*"']
-		exec 'syn match ' . lang . 'Number ' . pattern
-	endfor
+	call __ancient_vim_syntax_matches__(lang)
 endfor
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
