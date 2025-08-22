@@ -1,5 +1,5 @@
 " Author: DuckAfire
-" Version: v1.0.0
+" Version: v1.0.1
 " Repository: https://github.com/duckafire/ancient-vim
 " License:
 "
@@ -24,9 +24,6 @@
 " LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
-
-" `:h cterm`: see colors names
-" `:h group`: see generic highlight groups
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

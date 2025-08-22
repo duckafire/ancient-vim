@@ -27,38 +27,20 @@
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let s:languages = v:null
+let s:ARRAY_TYPE = type([])
+let s:NULL_TYPE  = type(v:null)
 
-if __is_valid_array__("g:highlight_languages_to_ancient_vim")
-	let s:languages =  g:highlight_languages_to_ancient_vim
-endif
-
-if __is_valid_array__("g:languages_to_ancient_vim")
-	if __is_null_array__(s:languages)
-		let s:languages =  g:languages_to_ancient_vim
-	else
-		let s:languages += g:languages_to_ancient_vim
+function! __is_valid_array__(strident)
+	if !exists(a:strident)
+		return 0 " false
 	endif
-endif
 
-if __is_null_array__(s:languages)
-	finish
-endif
+	let l:ident = eval(a:strident)
+	return !empty(l:ident) && type(l:ident) == s:ARRAY_TYPE
+endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let s:bases = ['Normal', 'Constant', 'Number', 'Statement', 'PreProc', 'Structure']
-let s:groups = [['Identifier'], ['Boolean'], ['Float', 'Character'], ["Keyword", "Conditional", "Operator", "Label", "Repeat", "SpecialChar", "Exception", "Delimiter"], ['PreProCondit', 'Define', 'Include', 'Macro'], ['StorageClass', 'Typedef']]
-
-" from generic to specific
-for lang in s:languages
-	for i in range( 0, len(s:bases) - 1 )
-		for group in s:groups[i]
-
-			exec 'hi! link ' . lang . group . ' ' . s:bases[i]
-
-		endfor
-	endfor
-endfor
+function! __is_null_array__(ident)
+	return type(a:ident) == s:NULL_TYPE
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

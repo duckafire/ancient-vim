@@ -1,5 +1,5 @@
 " Author: DuckAfire
-" Version: v1.0.0
+" Version: v1.0.1
 " Repository: https://github.com/duckafire/ancient-vim
 " License:
 "
@@ -25,16 +25,23 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-" `:h cterm`: see colors names
-" `:h group`: see generic highlight groups
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if exists("g:languages_to_ancient_vim") && !empty(g:languages_to_ancient_vim) && type(g:languages_to_ancient_vim) == type([])
-	let g:syntax_matches_languages_to_ancient_vim = g:languages_to_ancient_vim
+let s:languages = v:null
+
+if __is_valid_array__("g:syntax_matches_languages_to_ancient_vim")
+	let s:languages =  g:syntax_matches_languages_to_ancient_vim
 endif
 
-if !exists("g:syntax_matches_languages_to_ancient_vim") || empty(g:syntax_matches_languages_to_ancient_vim) || type(g:syntax_matches_languages_to_ancient_vim) != type([])
+if __is_valid_array__("g:languages_to_ancient_vim")
+	if __is_null_array__(s:languages)
+		let s:languages =  g:languages_to_ancient_vim
+	else
+		let s:languages += g:languages_to_ancient_vim
+	endif
+endif
+
+if __is_null_array__(s:languages)
 	finish
 endif
 
@@ -57,7 +64,7 @@ function __ancient_vim_syntax_matches__(lang)
 endfunction
 
 " from generic to specific
-for lang in g:syntax_matches_languages_to_ancient_vim
+for lang in s:languages
 	call __ancient_vim_syntax_matches__(lang)
 endfor
 
