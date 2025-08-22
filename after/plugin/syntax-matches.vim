@@ -1,5 +1,5 @@
 " Author: DuckAfire
-" Version: v1.0.1
+" Version: v1.0.2
 " Repository: https://github.com/duckafire/ancient-vim
 " License:
 "

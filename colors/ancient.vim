@@ -1,5 +1,5 @@
 " Author: DuckAfire
-" Version: v1.0.1
+" Version: v1.0.2
 " Repository: https://github.com/duckafire/ancient-vim
 " License:
 "
@@ -27,56 +27,31 @@
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" x256 colors terminais
-let s:normal_fg  = "white"
-let s:normal_bg  = "black"
-let s:func_fg    = "white"
-let s:const_fg   = "red"
-let s:num_fg     = "cyan"
-let s:comment_fg = "darkgray"
-let s:specCom_fg = "white"
-let s:specCom_bg = "black"
-let s:todo_fg    = "blue"
-let s:error_fg   = "red"
-let s:debug_fg   = "yellow"
-let s:statem_fg  = "yellow"
-let s:special_fg = "blue"
-let s:spChar_fg  = "cyan"
-let s:preProc_fg = "cyan"
-let s:type_fg    = "green"
-let s:struct_fg  = "blue"
-let s:string_fg  = "magenta"
-let s:tag_fg     = "magenta"
-let s:under_fg   = "cyan"
-
-if &t_Co == 8
-	let s:normal_fg  = "gray"
-	let s:comment_fg = "red"
-	let s:specCom_fg = "gray"
-	let s:todo_fg    = "red"
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " execute; highlight
-exe "hi! Normal         ctermfg=" . s:normal_fg  . " ctermbg=" . s:normal_bg . " cterm=none"
-exe "hi! Function       ctermfg=" . s:func_fg    . " ctermbg=none  cterm=bold"
-exe "hi! Constant       ctermfg=" . s:const_fg   . " ctermbg=none  cterm=none"
-exe "hi! Number         ctermfg=" . s:num_fg     . " ctermbg=none  cterm=none"
-exe "hi! Comment        ctermfg=" . s:comment_fg . " ctermbg=none  cterm=italic"
-exe "hi! SpecialComment ctermfg=" . s:specCom_fg . " ctermbg=" . s:specCom_bg . " cterm=standout,italic"
-exe "hi! Todo           ctermfg=" . s:todo_fg    . " ctermbg=none  cterm=standout"
-exe "hi! Error          ctermfg=" . s:error_fg   . " ctermbg=none  cterm=standout"
-exe "hi! Debug          ctermfg=" . s:debug_fg   . " ctermbg=none  cterm=standout"
-exe "hi! Statement      ctermfg=" . s:statem_fg  . " ctermbg=none  cterm=none"
-exe "hi! Special        ctermfg=" . s:special_fg . " ctermbg=none  cterm=none"
-exe "hi! SpecialChar    ctermfg=" . s:spChar_fg  . " ctermbg=none  cterm=none"
-exe "hi! PreProc        ctermfg=" . s:preProc_fg . " ctermbg=none  cterm=italic"
-exe "hi! Type           ctermfg=" . s:type_fg    . " ctermbg=none  cterm=none"
-exe "hi! Structure      ctermfg=" . s:struct_fg  . " ctermbg=none  cterm=bold"
-exe "hi! String         ctermfg=" . s:string_fg  . " ctermbg=none  cterm=none"
-exe "hi! Tag            ctermfg=" . s:tag_fg     . " ctermbg=none  cterm=none"
-exe "hi! Underlined     ctermfg=" . s:under_fg   . " ctermbg=none  cterm=none"
+hi! Normal         ctermfg=white    ctermbg=black cterm=none
+hi! Function       ctermfg=white    ctermbg=none  cterm=bold
+hi! Constant       ctermfg=red      ctermbg=none  cterm=none
+hi! Number         ctermfg=cyan     ctermbg=none  cterm=none
+hi! Comment        ctermfg=darkgray ctermbg=none  cterm=italic
+hi! SpecialComment ctermfg=white    ctermbg=black cterm=standout,italic
+hi! Todo           ctermfg=blue     ctermbg=none  cterm=standout
+hi! Error          ctermfg=red      ctermbg=none  cterm=standout
+hi! Debug          ctermfg=yellow   ctermbg=none  cterm=standout
+hi! Statement      ctermfg=yellow   ctermbg=none  cterm=none
+hi! Special        ctermfg=blue     ctermbg=none  cterm=none
+hi! SpecialChar    ctermfg=cyan     ctermbg=none  cterm=none
+hi! PreProc        ctermfg=cyan     ctermbg=none  cterm=italic
+hi! Type           ctermfg=green    ctermbg=none  cterm=none
+hi! Structure      ctermfg=blue     ctermbg=none  cterm=bold
+hi! String         ctermfg=magenta  ctermbg=none  cterm=none
+hi! Tag            ctermfg=magenta  ctermbg=none  cterm=none
+hi! Underlined     ctermfg=cyan     ctermbg=none  cterm=none
+
+" 'if support only eight colors'
+if &t_Co == 8
+	hi! Normal  ctermfg=gray
+	hi! Comment cterm=italic,bold
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
