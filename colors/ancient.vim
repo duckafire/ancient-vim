@@ -1,5 +1,5 @@
 " Author: DuckAfire
-" Version: v1.0.2
+" Version: v1.0.3
 " Repository: https://github.com/duckafire/ancient-vim
 " License:
 "
@@ -28,7 +28,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " execute; highlight
-hi! Normal         ctermfg=white    ctermbg=black cterm=none
 hi! Function       ctermfg=white    ctermbg=none  cterm=bold
 hi! Constant       ctermfg=red      ctermbg=none  cterm=none
 hi! Number         ctermfg=cyan     ctermbg=none  cterm=none
@@ -49,7 +48,6 @@ hi! Underlined     ctermfg=cyan     ctermbg=none  cterm=none
 
 " 'if support only eight colors'
 if &t_Co == 8
-	hi! Normal  ctermfg=gray
 	hi! Comment cterm=italic,bold
 endif
 
