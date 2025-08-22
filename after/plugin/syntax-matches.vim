@@ -57,7 +57,7 @@ function __ancient_vim_syntax_matches__(lang)
 
 		exec 'autocmd ' . s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Constant "\v<[A-Z_][A-Z_0-9]*>"'
 
-		for pattern in ['"\v\d+\.\d*"', '"\v\d*\.\d+"', '"\v0[bB][0-1]*"', '"\v0[oO][0-8]*"', '"\v0[xX][0-9a-fA-F]*"', '"\v\d+[eE]\d*"', '"\v\d+\.\d+[eE]\d*"']
+		for pattern in ['"\v\d+\.\d*"', '"\v\d*\.\d+"', '"\v0[bB][0-1]*"', '"\v0[oO][0-8]*"', '"\v0[xX][0-9a-fA-F]*"', '"\v\d*\.?\d+[eE][+-]*\d*"']
 			exec 'autocmd ' s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Number ' . pattern
 		endfor
 	exec 'augroup END'
