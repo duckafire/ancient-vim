@@ -1,5 +1,5 @@
 " Author: DuckAfire
-" Version: v1.0.4
+" Version: v1.0.5
 " Repository: https://github.com/duckafire/ancient-vim
 " License:
 "
@@ -57,7 +57,7 @@ function __ancient_vim_syntax_matches__(lang)
 
 		exec 'autocmd ' . s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Constant "\v<[A-Z_][A-Z_0-9]*>"'
 
-		for pattern in ['"\v\d+\.\d*"', '"\v\d*\.\d+"', '"\v0[bB][0-1]*"', '"\v0[oO][0-7]*"', '"\v0[xX][0-9a-fA-F]*"', '"\v\d*\.?\d+[eE][+-]*\d*"']
+		for pattern in ['"\v<\d+\.\d*>"', '"\v<\d*\.\d+>"', '"\v<0[bB][0-1]*>"', '"\v<0[oO][0-7]*>"', '"\v<0[xX][0-9a-fA-F]*>"', '"\v<\d*\.?\d+[eE][+-]?\d*>"']
 			exec 'autocmd ' s:autocmd_events . ' ' . a:lang . ' :syn match ' . a:lang . 'Number ' . pattern
 		endfor
 	exec 'augroup END'
