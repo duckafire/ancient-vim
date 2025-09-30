@@ -27,57 +27,49 @@
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" execute; highlight
-hi! Normal         ctermfg=white    ctermbg=black cterm=none
-hi! Function       ctermfg=white    ctermbg=none  cterm=bold
-hi! Constant       ctermfg=red      ctermbg=none  cterm=none
-hi! Number         ctermfg=cyan     ctermbg=none  cterm=none
-hi! Comment        ctermfg=darkgray ctermbg=none  cterm=italic
-hi! SpecialComment ctermfg=white    ctermbg=black cterm=standout,italic
-hi! Todo           ctermfg=blue     ctermbg=none  cterm=standout
-hi! Error          ctermfg=red      ctermbg=none  cterm=standout
-hi! Debug          ctermfg=yellow   ctermbg=none  cterm=standout
-hi! Statement      ctermfg=yellow   ctermbg=none  cterm=none
-hi! Special        ctermfg=blue     ctermbg=none  cterm=none
-hi! SpecialChar    ctermfg=cyan     ctermbg=none  cterm=none
-hi! PreProc        ctermfg=cyan     ctermbg=none  cterm=italic
-hi! Type           ctermfg=green    ctermbg=none  cterm=none
-hi! Structure      ctermfg=blue     ctermbg=none  cterm=bold
-hi! String         ctermfg=magenta  ctermbg=none  cterm=none
-hi! Tag            ctermfg=magenta  ctermbg=none  cterm=none
-hi! Underlined     ctermfg=cyan     ctermbg=none  cterm=none
+hi! Normal         ctermfg=white    ctermbg=black    cterm=none
+
+hi! Comment        ctermfg=darkgray ctermbg=none     cterm=italic
+hi! Constant       ctermfg=red      ctermbg=none     cterm=none
+hi! Special        ctermfg=blue     ctermbg=none     cterm=none
+hi! link           Identifier       Normal
+hi! Statement      ctermfg=yellow   ctermbg=none     cterm=none
+hi! PreProc        ctermfg=cyan     ctermbg=none     cterm=italic
+hi! Type           ctermfg=green    ctermbg=none     cterm=none
+hi! Underlined     ctermfg=cyan     ctermbg=none     cterm=none
+hi! Ignore         ctermfg=black    ctermbg=darkgray cterm=none
+hi! Error          ctermfg=red      ctermbg=none     cterm=standout
+hi! Todo           ctermfg=blue     ctermbg=none     cterm=standout
+hi! String         ctermfg=magenta  ctermbg=none     cterm=none
+hi! link           Character        Number
+hi! Number         ctermfg=cyan     ctermbg=none     cterm=none
+hi! link           Boolean          Constant
+hi! link           Float            Number
+hi! Function       ctermfg=white    ctermbg=none     cterm=bold
+hi! link           Conditional      Statement
+hi! link           Repeat           Statement
+hi! link           Label            Statement
+hi! link           Operator         Statement
+hi! link           Keyword          Statement
+hi! link           Exception        Statement
+hi! link           Include          PreProc
+hi! link           Define           PreProc
+hi! link           Macro            PreProc
+hi! link           PreCondit        PreProc
+hi! link           StorageClass     Structure
+hi! Structure      ctermfg=blue     ctermbg=none     cterm=bold
+hi! link           Typedef          Structure
+hi! Tag            ctermfg=magenta  ctermbg=none     cterm=none
+hi! SpecialChar    ctermfg=cyan     ctermbg=none     cterm=none
+hi! link           Delimiter        Statement
+hi! SpecialComment ctermfg=white    ctermbg=black    cterm=standout,italic
+hi! Debug          ctermfg=yellow   ctermbg=none     cterm=standout
+hi! link           PreProCondit     PreProc
 
 " 'if support only eight colors'
 if &t_Co == 8
 	hi! Normal  ctermfg=gray
 	hi! Comment cterm=italic,bold
 endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-   
-" highlight
-hi! link Identifier Normal
-
-hi! link Boolean Constant
-
-hi! link Float     Number
-hi! link Character Number
-
-hi! link Keyword     Statement
-hi! link Conditional Statement
-hi! link Operator    Statement
-hi! link Label       Statement
-hi! link Repeat      Statement
-hi! link SpecialChar Statement
-hi! link Exception   Statement
-hi! link Delimiter   Statement
-
-hi! link PreProCondit PreProc
-hi! link Define       PreProc
-hi! link Include      PreProc
-hi! link Macro        PreProc
-
-hi! link StorageClass Structure
-hi! link Typedef      Structure
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
