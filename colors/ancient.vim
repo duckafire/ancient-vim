@@ -131,8 +131,8 @@ endif
 " 'if support only eight colors'
 if &t_Co == 8
 	if s:IsEnable("g:disable_ancient_vim_syntax")
-		hi! Normal  ctermfg=gray
-		hi! Comment cterm=italic,bold
+		hi! Normal  ctermfg=gray     ctermbg=black cterm=none
+		hi! Comment ctermfg=darkgray ctermbg=none  cterm=italic,bold
 	endif
 
 	if s:IsEnable("g:disable_ancient_vim_ui")
@@ -146,13 +146,15 @@ if &t_Co == 8
 		" color will use the style below (UNDERLINE IS BAD
 		hi! CursorColumn ctermfg=none ctermbg=none cterm=underline
 
-		hi! SpecialKey       cterm=bold
-		hi! EndOfBuffer      ctermfg=darkgray cterm=bold
-		hi! LineNr           cterm=bold
-		hi! Visual           ctermfg=darkgray
-		hi! SpellCap         ctermfg=blue
+		hi! SpecialKey       ctermfg=darkgray ctermbg=none  cterm=none
+		hi! EndOfBuffer      ctermfg=darkgray ctermbg=none  cterm=bold
+		hi! IncSearch        ctermfg=yellow   ctermbg=none  cterm=bold,standout
+		hi! LineNr           ctermfg=darkgray ctermbg=none  cterm=bold
+		hi! Visual           ctermfg=darkgray ctermbg=black cterm=standout,bold
+		hi! SpellCap         ctermfg=blue     ctermbg=black cterm=standout
 		hi! TabLine          ctermfg=darkgray ctermbg=gray  cterm=bold
-		hi! ColorColumn      ctermbg=gray
+		hi! ColorColumn      ctermfg=none     ctermbg=gray  cterm=none
+		hi! StatusLineTerm   ctermfg=black    ctermbg=green cterm=none
 		hi! StatusLineTermNC ctermfg=darkgray ctermbg=white cterm=bold
 	endif
 endif
