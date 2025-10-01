@@ -145,6 +145,15 @@ if &t_Co == 8
 		" the x16 palette. Terminals that do not support this
 		" color will use the style below (UNDERLINE IS BAD
 		hi! CursorColumn ctermfg=none ctermbg=none cterm=underline
+
+		hi! SpecialKey       cterm=bold
+		hi! EndOfBuffer      ctermfg=darkgray cterm=bold
+		hi! LineNr           cterm=bold
+		hi! Visual           ctermfg=darkgray
+		hi! SpellCap         ctermfg=blue
+		hi! TabLine          ctermfg=darkgray ctermbg=gray  cterm=bold
+		hi! ColorColumn      ctermbg=gray
+		hi! StatusLineTermNC ctermfg=darkgray ctermbg=white cterm=bold
 	endif
 endif
 

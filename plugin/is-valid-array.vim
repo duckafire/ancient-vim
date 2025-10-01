@@ -30,12 +30,12 @@
 let s:ARRAY_TYPE = type([])
 let s:NULL_TYPE  = type(v:null)
 
-function! __is_valid_array__(strident)
-	if !exists(a:strident)
+function! __is_valid_array__(strIdent)
+	if !exists(a:strIdent)
 		return 0 " false
 	endif
 
-	let l:ident = eval(a:strident)
+	let l:ident = eval(a:strIdent)
 	return !empty(l:ident) && type(l:ident) == s:ARRAY_TYPE
 endfunction
 
