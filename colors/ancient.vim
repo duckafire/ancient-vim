@@ -122,7 +122,7 @@ if s:IsEnable("g:disable_ancient_vim_ui")
 	hi! StatusLineTermNC ctermfg=white       ctermbg=darkgray cterm=italic
 	hi! Cursor           ctermfg=white       ctermbg=black    cterm=none
 	hi! link             lCursor             Cursor
-	hi! MatchParen       ctermfg=black       ctermbg=yellow   cterm=bold
+	hi! MatchParen       ctermfg=blue        ctermbg=black    cterm=underline,italic,bold
 	" Normal
 	hi! ToolbarLine      ctermfg=white       ctermbg=black    cterm=bold
 	hi! link             ToolbarButton       ToolbarLine
